@@ -1,0 +1,35 @@
+/* :root{
+    --back-color: rgba(128, 0, 128, 0.267);
+}
+
+.dialogs{
+    background: var(--back-color);
+} */
+
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    padding: 10px;
+}
+
+.dialog_item{
+
+}
+
+.dialog{
+
+}
+.dialog.active{
+    color: blue;
+}
+.dialog.header, .message.header{
+    font-weight: bold;
+    text-align: center;
+}
+.messages{
+
+}
+
+.message{
+
+}

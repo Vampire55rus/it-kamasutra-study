@@ -5,25 +5,15 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
-  width: 1600px;
+  width: 95%;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
-.header {
-  grid-area: h;
-  background-color: antiquewhite;
-}
-
-.header img {
-  height: 20px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: aqua;
-}
-
-.content {
+.app-wrapper-content {
   grid-area: c;
   background-color: cornsilk;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: #e1e2e3 0px 5px 5px 5px;
 }
