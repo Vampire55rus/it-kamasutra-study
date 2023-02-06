@@ -12,3 +12,8 @@
 .item a.active{
     color: red;
 }
+.item img{
+    width: 20px;
+    border-radius: 10px;
+    transform: translateY(3px);
+}

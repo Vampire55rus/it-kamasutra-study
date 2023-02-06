@@ -8,7 +8,7 @@ import Music from './components/Music/Music'
 import Settings from './components/Settings/Settings'
 import {  Route, Routes } from 'react-router-dom'
 
-const App = () => {
+const App = (props) => {
   return (
 
 
@@ -18,8 +18,8 @@ const App = () => {
 
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/' element={ <Profile/>} />
-          <Route path='/dialogs' element={ <Dialogs/>} />
+          <Route path='/' element={ <Profile state={props.state.aPosts} />} />
+          <Route path='/dialogs/*' element={ <Dialogs state={props.state} />} />
           <Route path='/news' element={ <News /> } />
           <Route path='/music' element={ <Music /> } />
           <Route path='/settings' element={ <Settings />} />

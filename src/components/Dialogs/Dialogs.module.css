@@ -8,7 +8,7 @@
 
 .dialogs{
     display: grid;
-    grid-template-columns: 2fr 7fr;
+    grid-template-columns: 3fr 5fr;
     padding: 10px;
 }
 
@@ -32,4 +32,16 @@
 
 .message{
 
+}
+.item a{
+    text-decoration: none;
+    color: black;
+}
+.item a.active{
+    color:#a00b01;
+    font-size: 18px;
+}
+.item img{
+    width: 30px;
+    transform: translateY(8px);
 }

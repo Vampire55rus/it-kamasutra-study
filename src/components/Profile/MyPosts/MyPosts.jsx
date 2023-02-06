@@ -1,13 +1,19 @@
 import styles from './MyPosts.module.css'
 import Post from './Post/Post'
 
-const MyPosts = () => {
+const MyPosts = (props) => {
   return (<div>
     MyPosts
-    <div>New post</div>
+    <div>New post
+      <div>
+        <textarea></textarea>
+      </div>
+      <div style={{paddingBottom:20}}>
+        <button>Кнопка</button>
+      </div>
+    </div>
     <div className={styles.posts}>
-      <Post msg={`Я текст 1`} cntLike={5} />      
-      <Post msg={`Я текст 2`} cntLike={10} />      
+      {props.posts.map(item=> <Post msg={item.msg} cntLike={item.likes} /> )}    
     </div>
   </div>)
 }
