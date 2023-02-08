@@ -8,11 +8,11 @@ const Dialogs = (props) => {
         <div className={styles.dialogs}>
             <div className={styles.dialog_item}>
                 <div className={`${styles.dialog} ${styles.header}`}>Диалоги</div>
-                {props.state.aDialogs.map(item => <DialogItem name={item.name} id={item.id} icon={item.icon} />)}
+                {props.state.aDialogs.map(item => <DialogItem key={`Dialog${item.id}`} name={item.name} id={item.id} icon={item.icon} />)}
             </div >
             <div className={styles.messages}>
                 <div className={`${styles.message} ${styles.header}`}>Сообщения</div>
-                {props.state.aMessages.map(item=><MessageItem msg={item.msg} />)}
+                {props.state.aMessages.map((item, index)=><MessageItem key={`Message${index}`} msg={item.msg} />)}
             </div>
         </div >
     </>)

@@ -1,19 +1,40 @@
 .nav {
     grid-area: n;
-    background-color: aqua;    
+    background-color: aqua;
     border-radius: 10px;
     padding: 5px 10px;
     height: fit-content;
 }
-.item a{
+
+.item a {
     text-decoration: none;
     color: black;
 }
-.item a.active{
+
+.item a.active {
     color: red;
 }
-.item img{
+
+.item img {
     width: 20px;
     border-radius: 10px;
     transform: translateY(3px);
+}
+
+.item.friends {
+    padding-top: 20px;
+}
+
+.friendsContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.avaFriend{
+    text-align: center;
+}
+.avaFriend img {
+    width: 25px;
+    border-radius: 25px;
+    transform: translateY(5px);
 }
