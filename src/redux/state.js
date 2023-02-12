@@ -36,16 +36,12 @@ let store = {
       ],
       newTextMsg: "Новое сообщение",
       updateTextMsg(newText) {
-        
         this.newTextMsg = newText;
         store._callSubscriber();
       },
       addMsg() {
         let newMsg = {
-          msg:
-          this.newTextMsg == ""
-              ? "Пустое сообщение"
-              : this.newTextMsg,
+          msg: this.newTextMsg === "" ? "Пустое сообщение" : this.newTextMsg,
         };
         this.aMessages.push(newMsg);
         this.newTextMsg = "";
@@ -63,28 +59,45 @@ let store = {
       newPostText: "Тестовое сообщение",
     },
   },
-  getState(){
-    return this._state;
-  },
   _callSubscriber() {
     console.log("state changed");
   },
-  addPost() {
-    let newPost = {
-      id: this._state.aProfilePage.aPosts.length + 1,
-      msg: this._state.aProfilePage.newPostText,
-      likes: 0,
-    };
-    this._state.aProfilePage.aPosts.push(newPost);
-    this._state.aProfilePage.newPostText = "";
-    this._callSubscriber();
-  },
-  updateNewPostText(newText) {
-    this._state.aProfilePage.newPostText = newText;
-    this._callSubscriber();
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
+  },
+
+  //   Сторонние методы
+//   addPost() {
+//     let newPost = {
+//       id: this._state.aProfilePage.aPosts.length + 1,
+//       msg: this._state.aProfilePage.newPostText,
+//       likes: 0,
+//     };
+//     this._state.aProfilePage.aPosts.push(newPost);
+//     this._state.aProfilePage.newPostText = "";
+//     this._callSubscriber();
+//   },
+//   updateNewPostText(newText) {
+//     this._state.aProfilePage.newPostText = newText;
+//     this._callSubscriber();
+//   },
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: this._state.aProfilePage.aPosts.length + 1,
+        msg: this._state.aProfilePage.newPostText,
+        likes: 0,
+      };
+      this._state.aProfilePage.aPosts.push(newPost);
+      this._state.aProfilePage.newPostText = "";
+      this._callSubscriber();
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.aProfilePage.newPostText = action.newText;
+      this._callSubscriber();
+    }
   },
 };
 

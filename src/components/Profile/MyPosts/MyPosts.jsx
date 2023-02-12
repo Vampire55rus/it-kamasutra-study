@@ -5,12 +5,14 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
   let textareaElement = React.createRef();
   let addPost = () => {
-    props.addPost();
+    // props.addPost();
+    props.dispatch({type:"ADD-POST"})
   };
 
   let onChangeTextPost = () => {
     let text = textareaElement.current.value;
-    props.updateNewPostText(text);
+    // props.updateNewPostText(text);
+    props.dispatch({type:"UPDATE-NEW-POST-TEXT", newText:text})
   };
   return (
     <div>
