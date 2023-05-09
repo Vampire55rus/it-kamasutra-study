@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 let store = {
   _state: {
     aDialogPage: {
@@ -37,19 +39,19 @@ let store = {
         { msg: "Сообщение номер 4" },
       ],
       newTextMsg: "Новое сообщение",
-      updateTextMsg(newText) {
-        this.newTextMsg = newText;
-        store._callSubscriber();
-      },
-      addMsg() {
-        let newMsg = {
-          msg: this.newTextMsg === "" ? "Пустое сообщение" : this.newTextMsg,
-        };
-        this.aMessages.push(newMsg);
-        this.newTextMsg = "";
+      // updateTextMsg(newText) {
+      //   this.newTextMsg = newText;
+      //   store._callSubscriber();
+      // },
+      // addMsg() {
+      //   let newMsg = {
+      //     msg: this.newTextMsg === "" ? "Пустое сообщение" : this.newTextMsg,
+      //   };
+      //   this.aMessages.push(newMsg);
+      //   this.newTextMsg = "";
 
-        store._callSubscriber();
-      },
+      //   store._callSubscriber();
+      // },
     },
     aProfilePage: {
       aPosts: [
@@ -99,6 +101,20 @@ let store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.aProfilePage.newPostText = action.newText;
       this._callSubscriber();
+    } else if (action.type === ADD_MESSAGE) {
+      let newMsg = {
+        msg:
+          this._state.aDialogPage.newTextMsg === ""
+            ? "Пустое сообщение"
+            : this._state.aDialogPage.newTextMsg,
+      };
+      this._state.aDialogPage.aMessages.push(newMsg);
+      this._state.aDialogPage.newTextMsg = "";
+
+      this._callSubscriber();
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.aDialogPage.newTextMsg = action.newText;
+      this._callSubscriber();
     }
   },
 };
@@ -107,6 +123,12 @@ export const addPostActionCreator = () => {
 };
 export const updateNewPostTextActionCreactor = (text) => {
   return { type: UPDATE_NEW_POST_TEXT, newText: text };
+};
+export const addMessageActionCreator = () => {
+  return { type: ADD_MESSAGE };
+};
+export const updateNewMessageTextActionCreactor = (text) => {
+  return { type: UPDATE_NEW_MESSAGE_TEXT, newText: text };
 };
 let rerenderApp = () => {
   console.log("state changed");
