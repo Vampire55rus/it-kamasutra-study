@@ -1,3 +1,5 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 let store = {
   _state: {
     aDialogPage: {
@@ -70,22 +72,22 @@ let store = {
   },
 
   //   Сторонние методы
-//   addPost() {
-//     let newPost = {
-//       id: this._state.aProfilePage.aPosts.length + 1,
-//       msg: this._state.aProfilePage.newPostText,
-//       likes: 0,
-//     };
-//     this._state.aProfilePage.aPosts.push(newPost);
-//     this._state.aProfilePage.newPostText = "";
-//     this._callSubscriber();
-//   },
-//   updateNewPostText(newText) {
-//     this._state.aProfilePage.newPostText = newText;
-//     this._callSubscriber();
-//   },
+  //   addPost() {
+  //     let newPost = {
+  //       id: this._state.aProfilePage.aPosts.length + 1,
+  //       msg: this._state.aProfilePage.newPostText,
+  //       likes: 0,
+  //     };
+  //     this._state.aProfilePage.aPosts.push(newPost);
+  //     this._state.aProfilePage.newPostText = "";
+  //     this._callSubscriber();
+  //   },
+  //   updateNewPostText(newText) {
+  //     this._state.aProfilePage.newPostText = newText;
+  //     this._callSubscriber();
+  //   },
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: this._state.aProfilePage.aPosts.length + 1,
         msg: this._state.aProfilePage.newPostText,
@@ -94,13 +96,18 @@ let store = {
       this._state.aProfilePage.aPosts.push(newPost);
       this._state.aProfilePage.newPostText = "";
       this._callSubscriber();
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.aProfilePage.newPostText = action.newText;
       this._callSubscriber();
     }
   },
 };
-
+export const addPostActionCreator = () => {
+  return { type: ADD_POST };
+};
+export const updateNewPostTextActionCreactor = (text) => {
+  return { type: UPDATE_NEW_POST_TEXT, newText: text };
+};
 let rerenderApp = () => {
   console.log("state changed");
 };
